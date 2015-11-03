@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "Cohortis"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-Cohortis-2fdfa535-29da-4d2e-bd53-e26bb47d0c8e;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

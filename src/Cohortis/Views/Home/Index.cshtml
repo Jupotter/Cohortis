@@ -1,0 +1,35 @@
+﻿@model Cohortis.Models.PlayerModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<ul id="playerList" class="list-group"></ul>
+
+@section scripts {
+    <script type="text/javascript">
+        function bindData(element, data) {
+            $('<li/>')
+                .addClass('list-group-item')
+                .text('Players')
+                .appendTo(element);
+            $.each(data, function(id, option) {
+                $('<li/>')
+                    .addClass('list-group-item')
+                    .text(option.Name)
+                    .appendTo(element);
+            });
+        };
+        $(document).ready(function () {
+                $.ajax({
+                    url: "/api/v1/player",
+                    data: "",
+                    type: "GET",
+                    success: function (data) {
+                        bindData($("#playerList"), data);
+                    }
+                });
+        });
+    </script>
+}
