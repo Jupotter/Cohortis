@@ -5,16 +5,34 @@
 }
 
 
-<ul id="playerList" class="list-group"></ul>
+<ul id="playerList" class="player-list">
+    <li class="player-list-item">
+        <div class="player-name">
+            Jupotter
+        </div>
+        <div class="build-list-container">
+            <ul class="build-list">
+                <li class="build-list-item">
+                    Le Lance FLAAAMES
+                </li>
+                <li class="build-list-item">
+                    You Shall not Pass
+                </li>
+            </ul>
+        </div>
+        <div style="clear: both;"></div> 
+    </li>
+</ul>
 
 @section scripts {
     <script type="text/javascript">
         function bindData(element, data) {
+            return;
             $('<li/>')
                 .addClass('list-group-item')
                 .text('Players')
                 .appendTo(element);
-            $.each(data, function(id, option) {
+            $.each(data, function (id, option) {
                 $('<li/>')
                     .addClass('list-group-item')
                     .text(option.Name)
@@ -26,8 +44,7 @@
                     url: "/api/v1/player",
                     data: "",
                     type: "GET",
-                    success: function (data) {
-                        bindData($("#playerList"), data);
+                    success: function (data) {bindData($("#playerList"), data);
                     }
                 });
         });

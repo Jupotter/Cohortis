@@ -10,6 +10,7 @@
     padding-right: 15px;
 }
 
+
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
@@ -31,4 +32,40 @@ textarea {
     .carousel-caption {
         z-index: 10 !important;
     }
+}
+
+
+.playerList {
+}
+
+.player-list-item {
+    display: block;
+    border: 1px solid #DDD;
+    padding: 0px;
+    padding-right: 0px;
+    position:relative
+}
+
+.player-name {
+    width: 49%;
+    height: 100%;
+    position: absolute;
+    padding:10px
+}
+
+.build-list-container {
+    width: 50%;
+    float: right;
+}
+
+.build-list {
+    padding: 0px;
+}
+
+.build-list-item {
+    display: block;
+    border: 1px solid #DDD;
+    padding: 10px;
+    margin-bottom: -1px;
+    margin-right: -1px;
 }
