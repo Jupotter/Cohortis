@@ -1,4 +1,5 @@
 ﻿using Cohortis.Models;
+using Cohortis.ViewModels;
 using Microsoft.AspNet.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,9 @@ namespace Cohortis.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<PlayerModel> GetAll()
+        public IEnumerable<PlayerViewModel> GetAll()
         {
-            return repository.AllPlayers;
+            return repository.AllPlayers.Select(i => new PlayerViewModel(i)) ;
         }
 
         [HttpGet("{id:int}", Name = "GetByIdRoute")]
@@ -33,7 +34,7 @@ namespace Cohortis.Controllers
                 return HttpNotFound();
             }
 
-            return new ObjectResult(item);
+            return new ObjectResult(new PlayerViewModel(item));
         }
 
         [HttpGet("{id:int}/build", Name = "GetPlayerBuildRoute")]
@@ -45,7 +46,7 @@ namespace Cohortis.Controllers
                 return HttpNotFound();
             }
 
-            return new ObjectResult(item.Build);
+            return new ObjectResult(from BuildModel i in item.Build select new BuildViewModel(i));
         }
 
         [HttpPost]
