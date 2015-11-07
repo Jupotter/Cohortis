@@ -5,7 +5,7 @@
     playersService.factory('Players', ['$resource',
         function ($resource) {
             var res = $resource('/api/v1/player', {}, {
-                query: { method: 'GET', params: {}, isArray: true }
+                query: { method: 'GET', params: {}, isArray: true },
             });
             return res;
         }
