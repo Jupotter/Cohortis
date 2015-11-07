@@ -8,7 +8,8 @@
     playersController.$inject = ['$scope', 'Players']; 
 
     function playersController($scope, Players) {
-        $scope.Players = Players.query();
+        var players = Players.query();
+        $scope.Players = players;
 
         activate();
 

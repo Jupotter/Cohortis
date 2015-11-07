@@ -1,4 +1,8 @@
 ﻿
+body {
+    font-family: Arial, sans-serif
+}
+
 .player-list {
 }
 
@@ -12,9 +16,11 @@
 
 .player-name {
     width: 49%;
-    height: 100%;
     position: absolute;
-    padding:10px
+    padding-left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: x-large;
 }
 
 .build-list-container {
@@ -33,4 +39,8 @@
     margin-bottom: -1px;
     margin-right: -1px;
     margin-top: -1px;
+}
+
+.class-icon{
+    padding: 2px
 }
