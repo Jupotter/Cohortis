@@ -1,4 +1,4 @@
-﻿/// <binding />
+﻿/// <binding AfterBuild='deploy' />
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -21,5 +21,6 @@ module.exports = function (grunt) {
         }
     });
     
-    grunt.registerTask('default', ['uglify', 'watch']);
+    grunt.registerTask('dev', ['uglify', 'watch']);
+    grunt.registerTask('deploy', ['uglify']);
 };
