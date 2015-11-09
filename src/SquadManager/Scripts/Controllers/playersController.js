@@ -26,6 +26,14 @@
             $scope.Players = Players.query
         }
 
+        $scope.open = function (item) {
+            $scope.opened = item;
+        };
+
+        $scope.anyOpened = function () {
+            return $scope.opened !== undefined;
+        };
+
         activate();
 
         function activate() { }
