@@ -7,7 +7,7 @@ namespace SquadManager.Models
 {
     public class BuildModel
     {
-        public enum Classe
+        public enum Profession
         {
             Mesmer,
             Warrior,
@@ -19,8 +19,14 @@ namespace SquadManager.Models
             Necromancer
         }
 
+        public BuildModel()
+        {
+            Id = 0;
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
-        public Classe Class { get; set; }
+        public string Description { get; set; }
+        public Profession Class { get; set; }
     }
 }
