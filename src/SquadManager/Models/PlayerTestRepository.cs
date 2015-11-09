@@ -7,24 +7,22 @@ namespace SquadManager.Models
 {
     public class PlayerTestRepository : IPlayerRepository
     {
-        readonly List<PlayerModel> items = new List<PlayerModel>()
+        readonly List<PlayerModel> items = new List<PlayerModel>();
+
+        public PlayerTestRepository(IBuildRepository builds)
         {
-            new PlayerModel { Id = 1, Name="Jupotter" },
-            new PlayerModel { Id = 2, Name="Nilun" }
-        };
-
-        public PlayerTestRepository()
-        {
-            var player = items[0];
-
-            player.Build.Add(new BuildModel() { Id = 1, Name = "Lance FLAAAAMES", Class = BuildModel.Classe.Engineer});
-            player.Build.Add(new BuildModel() { Id = 2, Name = "You Shall Not Pass!", Class = BuildModel.Classe.Warrior});
-
-            player = items[1];
-
-            player.Build.Add(new BuildModel() { Id = 1, Name = "GivroFearoMancer", Class = BuildModel.Classe.Necromancer });
-            player.Build.Add(new BuildModel() { Id = 2, Name = "Auramancer", Class = BuildModel.Classe.Elementalist });
-            player.Build.Add(new BuildModel() { Id = 3, Name = "J'aime pas les drones", Class = BuildModel.Classe.Engineer });
+            var player = new PlayerModel { Name = "Jupotter" };
+            player.Build.Add(builds.GetById(0));
+            player.Build.Add(builds.GetById(1));
+            Add(player);
+            player = new PlayerModel { Name = "Nilun" };
+            player.Build.Add(builds.GetById(2));
+            player.Build.Add(builds.GetById(3));
+            player.Build.Add(builds.GetById(1));
+            Add(player);
+            player = new PlayerModel { Name = "Smurfi" };
+            player.Build.Add(builds.GetById(4));
+            Add(player);
         }
 
         public IEnumerable<PlayerModel> AllPlayers

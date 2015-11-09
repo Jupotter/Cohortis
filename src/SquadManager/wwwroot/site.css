@@ -4,7 +4,7 @@ body {
 }
 
 .player-list {
-    padding: 40px
+    padding: 10px
 }
 
 .player-list-item {
@@ -29,6 +29,22 @@ body {
     float: right;
 }
 
+.build-list-item-Engineer:hover {
+    background-color:antiquewhite
+}
+
+.build-list-item-Elementalist:hover {
+    background-color:crimson
+}
+
+.build-list-item-Necromancer:hover {
+    background-color:azure
+}
+
+.build-list-item-Warrior:hover {
+    background-color:gold
+}
+
 .build-list {
     padding: 0px;
 }
@@ -44,4 +60,18 @@ body {
 
 .class-icon{
     padding: 2px
+}
+
+.build-details {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #DDD
+}
+
+.build-details h2{
+    margin-top: 0px
+}
+
+.description{
+    white-space: pre-wrap;
 }

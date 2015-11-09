@@ -11,6 +11,7 @@ namespace SquadManager.ViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Class { get; set; }
+        public string Description { get; set; }
 
         public BuildViewModel()
         { }
@@ -20,6 +21,7 @@ namespace SquadManager.ViewModels
             Id = source.Id;
             Name = source.Name;
             Class = source.Class.ToString();
+            Description = source.Description;
         }
     }
 }

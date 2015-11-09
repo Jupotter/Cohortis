@@ -24,7 +24,7 @@ namespace SquadManager.API
             return repository.AllPlayers.Select(i => new PlayerViewModel(i)) ;
         }
 
-        [HttpGet("{id:int}", Name = "GetByIdRoute")]
+        [HttpGet("{id:int}", Name = "GetPlayerByIdRoute")]
         public IActionResult GetbyId(int id)
         {
             var item = repository.GetById(id);
@@ -60,7 +60,7 @@ namespace SquadManager.API
 
                 repository.Add(item);
 
-                string url = Url.RouteUrl("GetByIdRoute", new { id = item.Id },
+                string url = Url.RouteUrl("GetPlayerByIdRoute", new { id = item.Id },
                     Request.Scheme, Request.Host.ToUriComponent());
 
                 Context.Response.StatusCode = 201;

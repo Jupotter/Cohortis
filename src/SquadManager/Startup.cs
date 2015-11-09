@@ -11,6 +11,7 @@ namespace SquadManager
         {
             services.AddMvc();
 
+            services.AddSingleton<IBuildRepository, BuildTestRepository>();
             services.AddSingleton<IPlayerRepository, PlayerTestRepository>();
         }
 
