@@ -15,7 +15,11 @@ namespace SquadManager.Models
             Add(new BuildModel() { Name = "Lance FLAAAAMES", Class = BuildModel.Profession.Engineer });
             Add(new BuildModel() { Name = "You Shall Not Pass!", Class = BuildModel.Profession.Warrior });
             Add(new BuildModel() { Name = "GivroFearoMancer", Class = BuildModel.Profession.Necromancer });
-            Add(new BuildModel() { Name = "Auramancer", Class = BuildModel.Profession.Elementalist });
+            Add(new BuildModel() { Name = "Auramancer", Class = BuildModel.Profession.Elementalist,
+            Description=
+@"En combat: 
+Spam pouvoir, protection, vigueur, soins, rapidité, regen.
+Partage ses aura"});
             Add(new BuildModel() { Name = "J'aime pas les drones", Class = BuildModel.Profession.Engineer });
         }
 
