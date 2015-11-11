@@ -15,6 +15,10 @@ body {
     position:relative
 }
 
+.player-list-item:hover {
+    background-color:grey
+}
+
 .player-name {
     width: 49%;
     position: absolute;
@@ -62,6 +66,24 @@ body {
     padding: 2px
 }
 
+.player-details {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #DDD
+}
+
+.player-details h2{
+    margin-top: 0px
+}
+
+.player-details table, th, td{
+    border: 1px solid black;
+}
+
+.player-details th, td{
+    padding: 5px;
+}
+
 .build-details {
     margin: 10px;
     padding: 10px;
@@ -71,6 +93,7 @@ body {
 .build-details h2{
     margin-top: 0px
 }
+
 
 .description{
     white-space: pre-wrap;

@@ -12,6 +12,7 @@
         $scope.Players = players;
         $scope.newPlayer = {};
         $scope.newPlayer.Name = "";
+        $scope.typeOpen = 'none'
 
         $scope.newPlayer.Submit = function(item, event)
         {
@@ -26,12 +27,14 @@
             $scope.Players = Players.query
         }
 
-        $scope.open = function (item) {
+        $scope.openBuild = function (item) {
             $scope.opened = item;
+            $scope.typeOpen = 'build'
         };
 
-        $scope.anyOpened = function () {
-            return $scope.opened !== undefined;
+        $scope.openPlayer = function (item) {
+            $scope.opened = item;
+            $scope.typeOpen = 'player'
         };
 
         activate();

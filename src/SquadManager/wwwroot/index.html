@@ -28,14 +28,14 @@
         <div class="col-md-6">
             <div >
                 <ul class="player-list">
-                    <li class="player-list-item" ng-repeat="player in Players">
+                    <li class="player-list-item" ng-repeat="player in Players" ng-click="openPlayer(player)">
                         <div class="player-name">{{player.Name}}</div>
                         <div class="build-list-container">
-                            <ul class="build-list">
+                            <ul class="build-list" ng-click="$event.stopPropagation()">
                                 <li class="build-list-item" ng-if="player.Build.length == 0">
                                     No Build
                                 </li>
-                                <li class="build-list-item build-list-item-{{build.Class}}" ng-repeat="build in player.Build" ng-click="open(build)">
+                                <li class="build-list-item build-list-item-{{build.Class}}" ng-repeat="build in player.Build" ng-click="openBuild(build)">
                                     <img src="content/{{build.Class}}_tango_icon_20px.png" class="class-icon" />
                                     {{build.Name}}
                                 </li>
@@ -47,13 +47,69 @@
             </div>
         </div>
         <div class="col-md-6">
-            <ng-switch on="anyOpened()">
-                <div ng-switch-when="true" class="build-details">
-                    <div>
+            <ng-switch on="typeOpen">
+                <div ng-switch-when="build" class="build-details">
                         <h2>{{opened.Name}}</h2>
                         <p>{{opened.Class}}</p>
                         <p class="description">{{opened.Description}}</p>
-                    </div>
+                </div>
+                <div ng-switch-when="player" class="player-details">
+                    <h2>{{opened.Name}}</h2>
+                    <table>
+                        <tr>
+                            <th>Lundi</th>
+                            <th>Mardi</th>
+                            <th>Mercredi</th>
+                            <th>Jeudi</th>
+                            <th>Vendredi</th>
+                            <th>Samedi</th>
+                            <th>Dimanche</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ng-switch on="opened.Present.Monday">
+                                    <span ng-switch-when="true">Présent</span>
+                                    <span ng-switch-when="false">Absent</span>
+                                </ng-switch>
+                            </td>
+                            <td>
+                                <ng-switch on="opened.Present.Tuesday">
+                                    <span ng-switch-when="true">Présent</span>
+                                    <span ng-switch-when="false">Absent</span>
+                                </ng-switch>
+                            </td>
+                            <td>
+                                <ng-switch on="opened.Present.Wednesday">
+                                    <span ng-switch-when="true">Présent</span>
+                                    <span ng-switch-when="false">Absent</span>
+                                </ng-switch>
+                            </td>
+                            <td>
+                                <ng-switch on="opened.Present.Thursday">
+                                    <span ng-switch-when="true">Présent</span>
+                                    <span ng-switch-when="false">Absent</span>
+                                </ng-switch>
+                            </td>
+                            <td>
+                                <ng-switch on="opened.Present.Friday">
+                                    <span ng-switch-when="true">Présent</span>
+                                    <span ng-switch-when="false">Absent</span>
+                                </ng-switch>
+                            </td>
+                            <td>
+                                <ng-switch on="opened.Present.Saturday">
+                                    <span ng-switch-when="true">Présent</span>
+                                    <span ng-switch-when="false">Absent</span>
+                                </ng-switch>
+                            </td>
+                            <td>
+                                <ng-switch on="opened.Present.Sunday">
+                                    <span ng-switch-when="true">Présent</span>
+                                    <span ng-switch-when="false">Absent</span>
+                                </ng-switch>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </ng-switch>
         </div>
