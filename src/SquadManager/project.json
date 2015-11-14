@@ -13,7 +13,6 @@
         "Microsoft.AspNet.Server.WebListener": "1.0.0-beta5",
         "Microsoft.AspNet.Server.Kestrel": "1.0.0-beta5",
         "MySql.Data.Entity": "6.9.8"
-
     },
 
     "commands": {
@@ -22,21 +21,12 @@
     },
 
     "frameworks": {
-        "dnx451": { },
-        "dnxcore50": {
-            "dependencies": {
-                "System.Collections": "4.0.0.0",
-                "System.Collections.Concurrent": "4.0.0.0",
-                "System.ComponentModel": "4.0.0.0",
-                "System.Linq": "4.0.0.0",
-                "System.Reflection": "4.0.10.0",
-                "System.Runtime": "4.0.20.0",
-                "System.Runtime.InteropServices": "4.0.10.0",
-                "System.Threading": "4.0.0.0",
-                "System.Threading.Tasks": "4.0.0.0"
+        "dnx451": {
+            "frameworkAssemblies": {
+                "System.Data": "4.0.0.0",
+                "System.Data.Entity": "4.0.0.0"
             }
         }
-
     },
 
     "publishExclude": [
