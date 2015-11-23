@@ -12,5 +12,15 @@ namespace SquadManager.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public readonly List<BuildModel> Build = new List<BuildModel>();
+        public readonly Dictionary<DayOfWeek, bool> Present = new Dictionary<DayOfWeek, bool>()
+        {
+            { DayOfWeek.Monday, false },
+            { DayOfWeek.Tuesday, false },
+            { DayOfWeek.Wednesday, false },
+            { DayOfWeek.Thursday, false },
+            { DayOfWeek.Friday, false },
+            { DayOfWeek.Saturday, false },
+            { DayOfWeek.Sunday, false },
+        };
     }
 }

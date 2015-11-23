@@ -10,6 +10,7 @@ namespace SquadManager.Models
         IEnumerable<PlayerModel> AllPlayers{ get; }
         void Add(PlayerModel item);
         PlayerModel GetById(int id);
+        bool Update(PlayerModel item);
         bool TryDelete(int id);
     }
 }

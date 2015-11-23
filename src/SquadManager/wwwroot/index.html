@@ -26,16 +26,16 @@
 <body ng-cloak>
     <div class="container" ng-controller="playersController">
         <div class="col-md-6">
-            <div >
+            <div>
                 <ul class="player-list">
-                    <li class="player-list-item" ng-repeat="player in Players">
+                    <li class="player-list-item" ng-repeat="player in Players" ng-click="openPlayer(player)">
                         <div class="player-name">{{player.Name}}</div>
                         <div class="build-list-container">
-                            <ul class="build-list">
+                            <ul class="build-list" ng-click="$event.stopPropagation()">
                                 <li class="build-list-item" ng-if="player.Build.length == 0">
                                     No Build
                                 </li>
-                                <li class="build-list-item build-list-item-{{build.Class}}" ng-repeat="build in player.Build" ng-click="open(build)">
+                                <li class="build-list-item build-list-item-{{build.Class}}" ng-repeat="build in player.Build" ng-click="openBuild(build)">
                                     <img src="content/{{build.Class}}_tango_icon_20px.png" class="class-icon" />
                                     {{build.Name}}
                                 </li>
@@ -47,15 +47,78 @@
             </div>
         </div>
         <div class="col-md-6">
-            <ng-switch on="anyOpened()">
-                <div ng-switch-when="true" class="build-details">
-                    <div>
-                        <h2>{{opened.Name}}</h2>
-                        <p>{{opened.Class}}</p>
-                        <p class="description">{{opened.Description}}</p>
+            <div class="details" ng-if="typeOpen !== 'none'">
+                <ng-switch on="typeOpen">
+                    <div ng-switch-when="build" class="build-details">
+                        <ng-switch on="editMode">
+                            <div ng-switch-when="false">
+                                <h2>{{opened.Name}}</h2>
+                                <p class="class">{{classes[opened.Class].display}}</p>
+                                <p style="border:1px" class="description">{{opened.Description}}</p>
+                                <button ng-click="toggleEdit()">Edit</button>
+                            </div>
+                            <div ng-switch-when="true">
+                                <h2>{{opened.Name}}</h2>
+                                <p class="class">
+                                    <select ng-model="opened.Class" ng-options="name as display.display for (name, display) in classes"></select>
+                                </p>
+                                <p>
+                                    <textarea class="description" ng-model='opened.Description'></textarea>
+                                </p>
+                                <button ng-click="toggleEdit()">Cancel</button>
+                            </div>
+                        </ng-switch>
                     </div>
-                </div>
-            </ng-switch>
+                    <div ng-switch-when="player" class="player-details">
+                        <ng-switch on="editMode">
+                            <div ng-switch-when="false">
+                                <h2>{{opened.Name}}</h2>
+                                <table>
+                                    <tr>
+                                        <th>Lundi</th>
+                                        <th>Mardi</th>
+                                        <th>Mercredi</th>
+                                        <th>Jeudi</th>
+                                        <th>Vendredi</th>
+                                        <th>Samedi</th>
+                                        <th>Dimanche</th>
+                                    </tr>
+                                    <tr>
+                                        <td ng-repeat="day in weekdays">
+                                            <ng-switch on="opened.Present.{{day.name}}">
+                                                <span ng-switch-when="true">Présent</span>
+                                                <span ng-switch-when="false">Absent</span>
+                                            </ng-switch>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button ng-click="toggleEdit()">Edit</button>
+                            </div>
+                            <div ng-switch-when="true">
+                                <h2>{{opened.Name}}</h2>
+                                <table>
+                                    <tr>
+                                        <th>Lundi</th>
+                                        <th>Mardi</th>
+                                        <th>Mercredi</th>
+                                        <th>Jeudi</th>
+                                        <th>Vendredi</th>
+                                        <th>Samedi</th>
+                                        <th>Dimanche</th>
+                                    </tr>
+                                    <tr>
+                                        <td ng-repeat="day in weekdays">
+                                            <input type="checkbox" ng-model="opened.Present[day.name]" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button ng-click="savePlayer()">Save</button>
+                                <button ng-click="toggleEdit()">Cancel</button>
+                            </div>
+                        </ng-switch>
+                    </div>
+                </ng-switch>
+</div>
         </div>
     </div>
 </body>

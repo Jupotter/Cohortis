@@ -44,6 +44,16 @@ namespace SquadManager.Models
             return items.FirstOrDefault(x => x.Id == id);
         }
 
+        public bool Update(PlayerModel item)
+        {
+            if (items.Any(x => x.Id == item.Id))
+            {
+                items[item.Id] = item;
+                return true;
+            }
+            return false;
+        }
+
         public bool TryDelete(int id)
         {
             var item = GetById(id);
