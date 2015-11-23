@@ -36,6 +36,19 @@ namespace SquadManager.API
             return new ObjectResult(new PlayerViewModel(item));
         }
 
+        [HttpPost("{id:int}", Name = "UpdatePlayerByIdRoute")]
+        public void UpdatebyId(int id, [FromBody] PlayerModel item)
+        {
+            if (!ModelState.IsValid)
+            {
+                Context.Response.StatusCode = 400;
+            }
+            else
+            {
+                repository.Update(item);
+            }
+        }
+
         [HttpGet("{id:int}/build", Name = "GetPlayerBuildRoute")]
         public IActionResult GetBuild(int id)
         {
