@@ -12,23 +12,31 @@ namespace SquadManager.DB
     public class Connection
     {
         MySqlConnection connection;
+        string connectionString = "server=cohortis.eu;port=3306;database=cohortis_dev;uid=cohortis_dev;pwd=sanctus;persistsecurityinfo=true";
 
         public void StartConnect()
         {
-            string connectionString = "server=cohortis.eu;port=3306;database=cohortis_dev;uid=root;password=sanctus;";
             connection = new MySqlConnection(connectionString);
-
+            
+            connection.Open();
         }
 
         public List<joueur> getPlayer()
         {
-            List<joueur> res = new List<joueur>();
+
+            DbSet<joueur> res;
             MySqlTransaction tr = connection.BeginTransaction();
             using (CohorisDB cdb = new CohorisDB(connection, false))
             {
-                res = cdb.lJoueur;
+               
+                res = cdb.Joueur;
+                List<joueur> result = res.ToList<joueur>();
+                return result;
             }
-                return res;
+
+
+      
+              
         }
     }
 }

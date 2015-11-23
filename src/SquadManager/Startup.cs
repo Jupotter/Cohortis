@@ -14,6 +14,7 @@ namespace SquadManager
             services.AddSingleton<IBuildRepository, BuildTestRepository>();
             services.AddSingleton<IPlayerRepository, PlayerTestRepository>();
             DB.Connection db = new DB.Connection();
+            db.StartConnect();
             db.getPlayer();
         }
 

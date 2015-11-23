@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Common;
+using MySql.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace SquadManager.DB
 {
+    [DbConfigurationType(typeof (MySql.Data.Entity.MySqlEFConfiguration))]
     public class CohorisDB:DbContext
     {
-        public List<joueur> lJoueur = new List<joueur>();
+        public DbSet<joueur> Joueur
+        { get; set; }
         public List<Build> lBuild = new List<Build>();
         public List<BuildJoue> lBJouer = new List<BuildJoue>();
         public List<Classe> lClasse = new List<Classe>();
@@ -23,7 +27,8 @@ namespace SquadManager.DB
     }
     public class joueur
     {
-        public int IDJoueur { get; set; }
+
+        [Key]public int IDJoueur { get; set; }
         public string NomJoueur { get; set; }
         public bool Lead { get; set; }  
     }
