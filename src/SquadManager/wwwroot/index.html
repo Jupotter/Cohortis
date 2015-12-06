@@ -39,9 +39,15 @@
                                     <img src="content/{{build.Class}}_tango_icon_20px.png" class="class-icon" />
                                     {{build.Name}}
                                 </li>
+                                <li ng-if="editMode && player.Id == opened.Id" class="build-list-item">
+                                    Nouveau Build
+                                </li>
                             </ul>
                         </div>
                         <div style="clear: both;"></div>
+                    </li>
+                    <li class="player-list-item" ng-click="createPlayer()">
+                        <div class="player-name-new">Nouveau Joueur</div>
                     </li>
                 </ul>
             </div>
@@ -96,6 +102,8 @@
                             </div>
                             <div ng-switch-when="true">
                                 <h2>{{opened.Name}}</h2>
+                                <label>New Name</label>
+                                <input type="text" ng-model="opened.newName"/>
                                 <table>
                                     <tr>
                                         <th>Lundi</th>

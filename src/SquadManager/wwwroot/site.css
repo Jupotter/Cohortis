@@ -28,6 +28,12 @@ body {
     font-size: x-large;
 }
 
+.player-name-new {
+    width: 49%;
+    padding: 10px;
+    font-size: x-large;
+}
+
 .build-list-container {
     width: 50%;
     float: right;

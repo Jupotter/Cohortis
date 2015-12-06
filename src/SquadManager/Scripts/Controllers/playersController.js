@@ -49,12 +49,17 @@
             $scope.Players = Players.query();
         };
 
-        $scope.savePlayer = function () {
-            var id = $scope.opened.Id;
-            var res = $http.post("/api/v1/player/" + id, $scope.opened, {});
-            console.log(res);
+        $scope.createPlayer = function () {
+            $scope.opened = {
+                $save: function () {
+                    Players.save(this);
+            }};
+            $scope.typeOpen = 'player';
+        }
 
-            $scope.Players = Players.query();
+        $scope.savePlayer = function () {
+            $scope.opened.Name = $scope.opened.newName;
+            $scope.opened.$save();
             $scope.toggleEdit();
         }
 
@@ -70,6 +75,7 @@
 
         $scope.toggleEdit = function () {
             $scope.editMode = !$scope.editMode;
+            $scope.Players = Players.query();
         }
 
         activate();
