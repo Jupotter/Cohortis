@@ -25,18 +25,6 @@
             { name: 'Sunday' },
         ];
 
-        $scope.classes = {
-            Guardian: { display: 'Gardien', order: 0 },
-            Warrior: { display: 'Guerrier', order: 1 },
-            Revenant: { display: 'Revenant', order: 2 },
-            Engineer: { display: 'Ingénieur', order: 3 },
-            Ranger: { display: 'Rôdeur', order: 4 },
-            Thief: { display: 'Voleur', order: 5 },
-            Elementalist: { display: 'Élementaliste', order: 6 },
-            Necromancer: { display: 'Nécromancien', order: 7 },
-            Mesmer: { display: 'Envouteur', order: 8 },
-        };
-
         $scope.newPlayer.Submit = function (item, event) {
             var data = {
                 Name: $scope.newPlayer.Name,
@@ -51,16 +39,23 @@
 
         $scope.createPlayer = function () {
             $scope.opened = {
+                Name: "Nouveau joueur",
                 $save: function () {
                     Players.save(this);
             }};
             $scope.typeOpen = 'player';
+            $scope.editMode = true;
         }
 
         $scope.savePlayer = function () {
             $scope.opened.Name = $scope.opened.newName;
             $scope.opened.$save();
             $scope.toggleEdit();
+        }
+
+        $scope.open = function (item, type) {
+            $scope.opened = item;
+            $scope.typeOpen = type
         }
 
         $scope.openBuild = function (item) {

@@ -4,9 +4,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.initConfig({
+
         uglify: {
             options: {
-                beautify: true
+                beautify: true,
+                mangle: false,
+                compress: false,
             },
             my_target: {
                 files: { 'wwwroot/app.js': ['Scripts/app.js', 'Scripts/**/*.js'] }

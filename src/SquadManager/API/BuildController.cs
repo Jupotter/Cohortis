@@ -35,5 +35,19 @@ namespace SquadManager.API
 
             return new ObjectResult(new BuildViewModel(item));
         }
+
+        [HttpPost("{id:int}", Name = "UpdateBuildByIdRoute")]
+        public IActionResult UpdatebyId(int id, [FromBody] BuildModel item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new HttpStatusCodeResult(400);
+            }
+            else
+            {
+                repository.TryUpdate(item);
+                return new ObjectResult(new BuildViewModel(item));
+            }
+        }
     }
 }

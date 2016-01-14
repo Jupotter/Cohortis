@@ -53,9 +53,14 @@ Partage ses aura"});
             return true;
         }
 
-        public bool TryUpdate(BuildModel toUpdate)
+        public bool TryUpdate(BuildModel item)
         {
-            throw new NotImplementedException();
+            if (items.Any(x => x.Id == item.Id))
+            {
+                items[item.Id] = item;
+                return true;
+            }
+            return false;
         }
     }
 }

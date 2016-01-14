@@ -31,16 +31,16 @@
                     <li class="player-list-item" ng-repeat="player in Players" ng-click="openPlayer(player)">
                         <div class="player-name">{{player.Name}}</div>
                         <div class="build-list-container">
-                            <ul class="build-list" ng-click="$event.stopPropagation()">
+                            <ul class="build-list" ng-click="$event.stopPropagation()" ng-controller="buildController">
                                 <li class="build-list-item" ng-if="player.Build.length == 0">
-                                    No Build
+                                    Pas de build
                                 </li>
-                                <li class="build-list-item build-list-item-{{build.Class}}" ng-repeat="build in player.Build" ng-click="openBuild(build)">
-                                    <img src="content/{{build.Class}}_tango_icon_20px.png" class="class-icon" />
+                                <li class="build-list-item build-list-item-{{build.Class || 'no-class'}}" ng-repeat="build in player.Build" ng-click="openBuild(build)">
+                                    <img src="content/{{build.Class || 'no-class'}}_tango_icon_20px.png" class="class-icon" />
                                     {{build.Name}}
                                 </li>
                                 <li ng-if="editMode && player.Id == opened.Id" class="build-list-item">
-                                    Nouveau Build
+                                    Ajouter Build
                                 </li>
                             </ul>
                         </div>
@@ -55,7 +55,7 @@
         <div class="col-md-6">
             <div class="details" ng-if="typeOpen !== 'none'">
                 <ng-switch on="typeOpen">
-                    <div ng-switch-when="build" class="build-details">
+                    <div ng-switch-when="build" class="build-details" ng-controller="buildController">
                         <ng-switch on="editMode">
                             <div ng-switch-when="false">
                                 <h2>{{opened.Name}}</h2>
@@ -65,12 +65,15 @@
                             </div>
                             <div ng-switch-when="true">
                                 <h2>{{opened.Name}}</h2>
+                                <p><label>Nouveau Nom</label>
+                                <input type="text" ng-model="opened.newName" /></p>
                                 <p class="class">
                                     <select ng-model="opened.Class" ng-options="name as display.display for (name, display) in classes"></select>
                                 </p>
                                 <p>
                                     <textarea class="description" ng-model='opened.Description'></textarea>
                                 </p>
+                                <button ng-click="saveBuild()">Save</button>
                                 <button ng-click="toggleEdit()">Cancel</button>
                             </div>
                         </ng-switch>
@@ -102,7 +105,7 @@
                             </div>
                             <div ng-switch-when="true">
                                 <h2>{{opened.Name}}</h2>
-                                <label>New Name</label>
+                                <label>Nouveau Nom</label>
                                 <input type="text" ng-model="opened.newName"/>
                                 <table>
                                     <tr>
@@ -126,7 +129,7 @@
                         </ng-switch>
                     </div>
                 </ng-switch>
-</div>
+            </div>
         </div>
     </div>
 </body>
