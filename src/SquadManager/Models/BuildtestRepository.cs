@@ -52,5 +52,10 @@ Partage ses aura"});
             items.Remove(item);
             return true;
         }
+
+        public bool TryUpdate(BuildModel toUpdate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

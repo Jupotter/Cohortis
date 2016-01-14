@@ -11,5 +11,7 @@ namespace SquadManager.Models
         void Add(BuildModel item);
         BuildModel GetById(int id);
         bool TryDelete(int id);
+        bool TryUpdate(BuildModel toUpdate);
+
     }
 }

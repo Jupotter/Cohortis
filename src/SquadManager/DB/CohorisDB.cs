@@ -11,10 +11,10 @@ namespace SquadManager.DB
     {
         public DbSet<joueur> Joueur
         { get; set; }
-        public List<Build> lBuild = new List<Build>();
-        public List<BuildJoue> lBJouer = new List<BuildJoue>();
-        public List<Classe> lClasse = new List<Classe>();
-        public List<Role> lRole = new List<Role>();
+        public DbSet<Build> lBuild { get; set; }
+        public DbSet<BuildJoue> lBJouer { get; set; }
+        public DbSet<Classe> lClasse { get; set; }
+        public DbSet<Role> lRole { get; set; }
 
         public CohorisDB():base()
         {
@@ -34,29 +34,30 @@ namespace SquadManager.DB
     }
     public class Build
     {
-        public int IDBuild { get; set; }
+     [Key]public int IDBuild { get; set; }
         public string Nom { get; set; }
         public string Link { get; set; }
         public int IDCreator { get; set; }
         public int IDClasse { get; set; }
         public int IDRole { get; set; }
         public bool Validé { get; set; }
+        public string Desctiption { get; set; }
     }
     public class BuildJoue
     {
-        public int IDJoueur { get; set; }
+        [Key]public int IDJoueur { get; set; }
         public int IDBuild { get; set; }
 
     }
     public class Classe
     {
-        public int ID { get; set; }
+        [Key]public int ID { get; set; }
         public string Nom { get; set; }
         public string CA { get; set; }
     }
     public class Role
     {
-        public int ID { get; set; }
+        [Key]public int ID { get; set; }
         public string Nom { get; set; }
     }
 }

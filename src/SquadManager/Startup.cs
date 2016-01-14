@@ -15,7 +15,7 @@ namespace SquadManager
             services.AddSingleton<IPlayerRepository, PlayerTestRepository>();
             DB.Connection db = new DB.Connection();
             db.StartConnect();
-            db.getPlayer();
+
         }
 
         public void Configure(IApplicationBuilder app)
